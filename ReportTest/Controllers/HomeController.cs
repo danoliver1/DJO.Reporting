@@ -12,11 +12,11 @@ namespace ReportTest.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ReportSerializer _reportSerializer;
+        private readonly ReportGenerator _reportSerializer;
 
         public HomeController()
         {
-            _reportSerializer = new ReportSerializer(new IReportSerializer[]
+            _reportSerializer = new ReportGenerator(new IReportSerializer[]
             {
                 new ExcelReportSerializer(new IColumnFormatter[] {new HeaderFormatter(), new TotalFormatter()}),
                 new CsvReportSerializer()

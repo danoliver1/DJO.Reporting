@@ -5,14 +5,19 @@ using DJO.Reporting.Serialization.ReportSerializers;
 
 namespace DJO.Reporting.Serialization
 {
+    public interface IReportGenerator
+    {
+        SerializedReport Serialize(Report report, string reportFormat);
+    }
+
     /// <summary>
     /// Responsible for converting the Report object to the output format
     /// </summary>
-    public class ReportSerializer
+    public class ReportGenerator
     {
         private readonly IReportSerializer[] _reportSerializers;
 
-        public ReportSerializer(IEnumerable<IReportSerializer> reportSerializers)
+        public ReportGenerator(IEnumerable<IReportSerializer> reportSerializers)
         {
             _reportSerializers = reportSerializers.ToArray();
         }

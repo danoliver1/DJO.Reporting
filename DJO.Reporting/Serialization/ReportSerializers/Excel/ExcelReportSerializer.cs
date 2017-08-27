@@ -18,7 +18,7 @@ namespace DJO.Reporting.Serialization.ReportSerializers.Excel
             _columnFormatters = columnTypeFormatters.ToDictionary(x => x.ColumnFormat, x => new Action<ExcelRange>(x.UpdateCell));
         }
 
-        public string ReportFormat => "Excel";
+        public string ReportFormat => ReportFormats.Excel;
 
         public SerializedReport Serialize(Report report)
         {
