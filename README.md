@@ -85,5 +85,4 @@ The report is serialized in the requested format to a SerializedReport object wh
 * Convert to NuGet package and set up NuGet feed.
 * Report from a DataSet - each datatable would show as a separate worksheet in Excel or as a separate file in a csv file (bundled into a .zip file)
 * More unit tests
-* Improved StructureMap integration for easier set up
 * Add ability to format columns in CSV file. I.e. for a decimal the developer may want to format the number to two decimal places.
