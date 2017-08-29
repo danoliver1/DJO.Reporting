@@ -6,6 +6,16 @@ Out of the box this package provides the ability to convert an enumerable of obj
 A report can also be manually constructed by building up Groups, Rows and Columns.
 This project has been written in an extensible way so new methods of creating and styling reports can be added easily.
 
+## Set up
+
+### In an MVC web project using StructureMap 4.x
+This package contains a StructureMap 4.x registry making set up very simple when used in a StructureMap 4.x solution.
+The registry needs to be registered in `IoC.cs` (`c.AddRegistry<ReportingRegistry>();`).
+
+### In any project using an IoC container
+All concrete implementations of `IReportSerializer` and `IColumnFormatter` need to be registered.
+The concrete implemenation of `IReportGenerator` needs to be registered - preferably as a singleton.
+
 ## Creating a Report
 
 ### From a DataTable
@@ -79,13 +89,3 @@ The report is serialized in the requested format to a SerializedReport object wh
 * More unit tests
 * Improved StructureMap integration for easier set up
 * Add ability to format columns in CSV file. I.e. for a decimal the developer may want to format the number to two decimal places.
-
-## Set up
-
-### In an MVC web project using StructureMap 4.x
-This package contains a StructureMap 4.x registry making set up very simple when used in a StructureMap 4.x solution.
-The registry needs to be registered in `IoC.cs` (`c.AddRegistry<ReportingRegistry>();`).
-
-### In any project using an IoC container
-All concrete implementations of `IReportSerializer` and `IColumnFormatter` need to be registered.
-The concrete implemenation of `IReportGenerator` needs to be registered - preferably as a singleton.
