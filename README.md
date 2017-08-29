@@ -7,7 +7,7 @@ A report can be manually constructed by building up Groups, Rows and Columns; on
 This project has been written in an extensible way so new methods of creating and styling reports can be added easily.
 
 ## Installing the NuGet package
-* Add the NuGet feed to Visual Studio https://www.myget.org/F/danoliver1/api/v3/index.json`
+* Add the NuGet feed to Visual Studio https://www.myget.org/F/danoliver1/api/v3/index.json
 * Install the package DJO.Reporting
 
 ## IoC container setup
