@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.3
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportTest", "ReportTest\ReportTest.csproj", "{FAC4B3E2-D16B-4781-91F7-CFBB15F23728}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DJO.Reporting", "DJO.Reporting\DJO.Reporting.csproj", "{80829EB2-18C2-475F-A851-7E67DDEE1D45}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DJO.Reporting.Tests", "DJO.Reporting.Tests\DJO.Reporting.Tests.csproj", "{E77A3215-1ABF-445A-BED7-83890BC76298}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{339D4C31-B07E-4B39-A1A7-7895221F062B}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +35,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9FAF0A1C-1DF9-4391-BE93-70CEB0DB715B}
 	EndGlobalSection
 EndGlobal

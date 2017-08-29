@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using DJO.Reporting.Serialization;
+﻿using DJO.Reporting.Serialization;
 using DJO.Reporting.Serialization.ReportSerializers;
 using DJO.Reporting.Serialization.ReportSerializers.Excel.CellFormatters;
 using StructureMap;
@@ -11,10 +10,9 @@ namespace DJO.Reporting.Structuremap
     {
         public ReportingRegistry()
         {
-            //TODO: find a better way of doing this
             Scan(cfg =>
             {
-                cfg.Assembly(Assembly.Load("DJO.Reporting"));
+                cfg.TheCallingAssembly();
                 cfg.AddAllTypesOf<IColumnFormatter>();
                 cfg.AddAllTypesOf<IReportSerializer>();
                 cfg.WithDefaultConventions();
