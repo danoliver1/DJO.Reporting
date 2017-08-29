@@ -53,15 +53,13 @@ var report = new Report(
   public ActionResult ReportDataTable()
   {
     var dataTable = GetDataTable();
-    var report = Report.FromDataTable(dataTable);
-    return new ReportResult("Report", report, ReportFormats.Excel);
+    return new ReportResult("Report", Report.FromDataTable(dataTable), ReportFormats.Excel);
   }
   
   public ActionResult ReportEnumerable()
   {
-    var books = GetBooks();
-    var report = Report.FromEnumerable(books);
-    return new ReportResult("Report", report, ReportFormats.Csv);
+    IEnumerable<Book> books = GetBooks();
+    return new ReportResult("Report", Report.FromEnumerable(books), ReportFormats.Csv);
   }
 ```
 ### Byte array
