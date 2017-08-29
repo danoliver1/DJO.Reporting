@@ -2,42 +2,12 @@
 using System.Data;
 using System.Web.Mvc;
 using DJO.Reporting;
-using DJO.Reporting.Serialization;
-using DJO.Reporting.Serialization.ReportSerializers;
-using DJO.Reporting.Serialization.ReportSerializers.Csv;
-using DJO.Reporting.Serialization.ReportSerializers.Excel;
-using DJO.Reporting.Serialization.ReportSerializers.Excel.CellFormatters;
+using DJO.Reporting.Mvc;
 
 namespace ReportTest.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ReportGenerator _reportSerializer;
-
-        public HomeController()
-        {
-            _reportSerializer = new ReportGenerator(new IReportSerializer[]
-            {
-                new ExcelReportSerializer(new IColumnFormatter[] {new HeaderFormatter(), new TotalFormatter()}),
-                new CsvReportSerializer()
-            });
-        }
-
-        public class Book
-        {
-            [Ignore]
-            public int Id { get; set; }
-            
-            public string Name { get; set; }
-
-            public string Description { get; set; }
-
-            public DateTime? PublishDate { get; set; }
-
-            [ColumnFormat("Total")]
-            public string Price { get; set; }
-        }
-
         public ActionResult Index()
         {
             return View();
@@ -67,58 +37,46 @@ namespace ReportTest.Controllers
                     Price = "£0.49"
                 }
             };
-            var report = Report.FromEnumerable(books);
-            return ReportResult("Books", report, reportFormat);
+            return new ReportResult("Books", Report.FromEnumerable(books), reportFormat);
         }
 
-        public ActionResult Test(string reportFormat = "Excel", bool dt = false, bool multi = false)
+        public ActionResult DataTable(string reportFormat = "Excel")
         {
-            var report = multi ? GetTwoTabReport() : GetSampleOneTabReport();
+            var dataTable = new DataTable();
+            dataTable.Columns.Add("Name");
+            dataTable.Columns.Add("Description");
+            dataTable.Rows.Add("Test", "Description yay");
 
-            if (dt)
-            {
-                var dataTable = new DataTable();
-                dataTable.Columns.Add("Name");
-                dataTable.Columns.Add("Description");
-                dataTable.Rows.Add("Test", "Description yay");
-
-                report = Report.FromDataTable(dataTable);
-            }
-
-            return ReportResult("TestReport", report, reportFormat);
+            return new ReportResult("DataTableExport", Report.FromDataTable(dataTable), reportFormat);
         }
 
-        public ActionResult About()
+        public ActionResult ManualOneTab(string reportFormat = "Excel")
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            var report = GetSampleOneTabReport();
+            return new ReportResult("OneTabReport", report, reportFormat);
         }
 
-        public ActionResult Contact()
+        public ActionResult ManualMultiTab(string reportFormat = "Excel")
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            var report = GetTwoTabReport();
+            return new ReportResult("MultiTabReport", report, reportFormat);
         }
 
-        private FileContentResult ReportResult(string fileName, Report report, string reportFormat,
-            bool includeDateStamp = true)
+        public class Book
         {
-            var serialized = _reportSerializer.Serialize(report, reportFormat);
+            [Ignore]
+            public int Id { get; set; }
 
-            var fileDownloadName = fileName;
+            public string Name { get; set; }
 
-            if (includeDateStamp)
-                fileDownloadName += $"_{DateTime.Now:yyyyMMddHHmm}";
+            public string Description { get; set; }
 
-            return new FileContentResult(serialized.Data, serialized.ContentType)
-            {
-                FileDownloadName = $"{fileDownloadName}.{serialized.FileExtension}"
-            };
+            public DateTime? PublishDate { get; set; }
+
+            [ColumnFormat("Total")]
+            public string Price { get; set; }
         }
-
-        //For testing purposes
+        
         public static Report GetSampleOneTabReport()
         {
             return new Report(new[]

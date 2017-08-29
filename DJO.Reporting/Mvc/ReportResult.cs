@@ -49,7 +49,8 @@ namespace DJO.Reporting.Mvc
             var response = context.HttpContext.Response;
             response.ContentType = serializedReport.ContentType;
 
-            var headerValue = ContentDispositionUtil.GetHeaderValue(FileName);
+            var fileNameWithExtension = $"{FileName}.{serializedReport.FileExtension}";
+            var headerValue = ContentDispositionUtil.GetHeaderValue(fileNameWithExtension);
             context.HttpContext.Response.AddHeader("Content-Disposition", headerValue);
 
             response.OutputStream.Write(serializedReport.Data, 0, serializedReport.Data.Length);

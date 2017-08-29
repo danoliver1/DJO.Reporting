@@ -13,7 +13,7 @@ namespace DJO.Reporting.Serialization
     /// <summary>
     /// Responsible for converting the Report object to the output format
     /// </summary>
-    public class ReportGenerator
+    public class ReportGenerator : IReportGenerator
     {
         private readonly IReportSerializer[] _reportSerializers;
 
