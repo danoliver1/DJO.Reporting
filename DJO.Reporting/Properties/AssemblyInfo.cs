@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DJO.Reporting")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Out of the box this package provides the ability to convert an enumerable of objects or a DataTable to a report in Excel or CSV. A report can also be manually constructed by building up Groups, Rows and Columns. This project has been written in an extensible way so new methods of creating and styling reports can be added easily.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("DJO.Reporting")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCopyright("Copyright © Dan Oliver 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

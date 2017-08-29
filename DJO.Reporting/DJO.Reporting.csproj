@@ -97,6 +97,7 @@
     <Compile Include="SerializedReport.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DJO.Reporting.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
