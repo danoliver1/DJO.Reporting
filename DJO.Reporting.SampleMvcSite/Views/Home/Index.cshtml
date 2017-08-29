@@ -1,0 +1,19 @@
+﻿@using DJO.Reporting.Serialization
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Report examples</h2>
+
+<ul>
+    <li>@Html.ActionLink("DataTable (Excel)", "DataTable", new { reportFormat = ReportFormats.Excel })</li>
+    <li>@Html.ActionLink("DataTable (Csv)", "DataTable", new { reportFormat = ReportFormats.Csv })</li>
+    <li>@Html.ActionLink("IEnumerable<Book> (Excel)", "Enumerable", new { reportFormat = ReportFormats.Excel })</li>
+    <li>@Html.ActionLink("IEnumerable<Book> (Csv)", "Enumerable", new { reportFormat = ReportFormats.Csv })</li>
+    <li>@Html.ActionLink("Manual One Tab (Excel)", "ManualOneTab", new { reportFormat = ReportFormats.Excel })</li>
+    <li>@Html.ActionLink("Manual One Tabs (Csv)", "ManualOneTab", new { reportFormat = ReportFormats.Csv })</li>
+    <li>@Html.ActionLink("Manual Multi Tab (Excel)", "ManualMultiTab", new { reportFormat = ReportFormats.Excel })</li>
+    <li>@Html.ActionLink("Manual Multi Tabs (Csv)", "ManualMultiTab", new { reportFormat = ReportFormats.Csv })</li>
+</ul>
+

@@ -29,6 +29,7 @@ namespace DJO.Reporting.Mvc
             FileName = fileName;
             Report = report;
             ReportFormat = reportFormat;
+            IncludeTimeStamp = includeTimeStamp;
 
             //Load in the default ReportGenerator
             ReportGenerator = DependencyResolver.Current.GetService<IReportGenerator>();
@@ -38,6 +39,7 @@ namespace DJO.Reporting.Mvc
         public string FileName { get; }
         public Report Report { get; }
         public string ReportFormat { get; }
+        public bool IncludeTimeStamp { get; }
 
         public override void ExecuteResult(ControllerContext context)
         {
@@ -48,8 +50,10 @@ namespace DJO.Reporting.Mvc
 
             var response = context.HttpContext.Response;
             response.ContentType = serializedReport.ContentType;
+            
+            var timeStamp = IncludeTimeStamp ? $"_{DateTime.Now:yyyyMMddHHmmss}" : string.Empty;
+            var fileNameWithExtension = $"{FileName}{timeStamp}.{serializedReport.FileExtension}";
 
-            var fileNameWithExtension = $"{FileName}.{serializedReport.FileExtension}";
             var headerValue = ContentDispositionUtil.GetHeaderValue(fileNameWithExtension);
             context.HttpContext.Response.AddHeader("Content-Disposition", headerValue);
 
