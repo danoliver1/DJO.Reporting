@@ -82,10 +82,10 @@ The report is serialized in the requested format to a SerializedReport object wh
 
 ## Set up
 
-### StructureMap 4.x in an MVC web project
+### In an MVC web project using StructureMap 4.x
 This package contains a StructureMap 4.x registry making set up very simple when used in a StructureMap 4.x solution.
 The registry needs to be registered in `IoC.cs` (`c.AddRegistry<ReportingRegistry>();`).
 
-### Any other IoC container
+### In any project using an IoC container
 All concrete implementations of `IReportSerializer` and `IColumnFormatter` need to be registered.
 The concrete implemenation of `IReportGenerator` needs to be registered - preferably as a singleton.
