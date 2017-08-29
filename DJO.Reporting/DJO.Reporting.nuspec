@@ -4,11 +4,10 @@
     <id>$id$</id>
     <version>$version$</version>
     <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <authors>Dan Oliver (danoliver1)</authors>
+    <owners>Dan Oliver (danoliver1)</owners>
     <licenseUrl>https://github.com/danoliver1/DJO.Reporting/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/danoliver1/DJO.Reporting</projectUrl>
-    <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>This is an alpha version. It requires further testing and more defensive coding in places so expect a bug or two.</releaseNotes>
