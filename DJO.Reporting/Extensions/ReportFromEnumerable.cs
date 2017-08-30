@@ -13,6 +13,9 @@ namespace DJO.Reporting
     {
         public static Report FromEnumerable<T>(IEnumerable<T> enumerable)
         {
+            if(enumerable == null)
+                throw new ArgumentNullException(nameof(enumerable));
+
             var type = typeof(T);
             var properties = type
                 .GetProperties(BindingFlags.Public | BindingFlags.Instance)

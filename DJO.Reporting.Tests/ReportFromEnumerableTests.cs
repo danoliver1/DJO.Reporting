@@ -1,5 +1,5 @@
 ﻿using System;
-using System.ComponentModel;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using NUnit.Framework;
@@ -65,6 +65,29 @@ namespace DJO.Reporting.Tests
             Assert.That(dataColumns[0].ColumnFormat, Is.EqualTo(Report.ColumnFormats.Data));
             Assert.That(dataColumns[1].ColumnFormat, Is.EqualTo("Price"));
             Assert.That(dataColumns[2].ColumnFormat, Is.EqualTo(Report.ColumnFormats.Data));
+        }
+
+        [Test]
+        public void WhenNull_ThrowsArgumentNullException()
+        {
+            IEnumerable<Book> books = null;
+            Assert.That(() => Report.FromEnumerable(books), Throws.ArgumentNullException);
+        }
+
+        [Test]
+        public void WhenEmptyEnumerable_CreatesReportWithHeaders()
+        {
+            var books = Enumerable.Empty<Book>();
+            var report = Report.FromEnumerable(books);
+
+            var rows = report.Groups.First().Rows.ToArray();
+            Assert.That(rows.Count, Is.EqualTo(1));
+
+            var columns = rows.Single().Columns.ToArray();
+            Assert.That(columns.All(x => x.ColumnFormat == Report.ColumnFormats.Header));
+            Assert.That(columns[0].Value, Is.EqualTo("Name"));
+            Assert.That(columns[1].Value, Is.EqualTo("Price"));
+            Assert.That(columns[2].Value, Is.EqualTo("Published")); //Set by DisplayAttribute
         }
     }
 }

@@ -17,6 +17,12 @@ namespace DJO.Reporting
         /// <returns>A Report object</returns>
         public static Report FromDataTable(DataTable dataTable)
         {
+            if(dataTable == null)
+                throw new ArgumentNullException(nameof(dataTable));
+
+            if(dataTable.Columns.Count == 0)
+                throw new ArgumentException("DataTable contains no columns", nameof(dataTable));
+
             Func<DataTable, Row> getHeaderRow = (dt) =>
             {
                 var headerColumns = new List<Column>();
