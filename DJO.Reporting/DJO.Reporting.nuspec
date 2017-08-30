@@ -8,6 +8,7 @@
     <owners>Dan Oliver (danoliver1)</owners>
     <licenseUrl>https://github.com/danoliver1/DJO.Reporting/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/danoliver1/DJO.Reporting</projectUrl>
+    <iconUrl>https://dl.dropboxusercontent.com/s/hszndnnkf0z3xoy/DJO.Reporting.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>This is an alpha version. It requires further testing and more defensive coding in places so expect a bug or two.</releaseNotes>
